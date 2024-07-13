@@ -1,0 +1,4 @@
+[submodule "ECB_T8_T113_dockenv"]
+	path = ECB_T8_T113_dockenv
+	url = git@github.com:LE0xUL/docker-env-build-embedded-linux.git
+	branch = ECB_T8_T113_dockenv
