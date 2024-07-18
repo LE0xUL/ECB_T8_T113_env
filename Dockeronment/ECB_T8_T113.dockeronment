@@ -1,0 +1,39 @@
+FROM ubuntu:20.04
+
+ARG DUID
+ARG DGID
+ARG DUSR
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+# Download basic build tools
+RUN apt-get update && \
+    apt-get install --yes --no-install-recommends \
+    rsync \
+    wget \
+    unzip \
+    build-essential \
+    git \
+    bc \
+    swig \
+    libncurses-dev \
+    libpython3-dev \
+    libssl-dev \
+    python3-distutils \
+    android-tools-mkbootimg \
+    file \
+    cpio \
+    ca-certificates \
+    net-tools \
+    iputils-ping \
+    xxd
+
+# Clear root psw
+RUN passwd -d root
+
+# Create user
+RUN groupadd -g ${DGID} ${DUSR} && useradd -u ${DUID} -g ${DUSR} -m ${DUSR}
+
+# Change to user
+USER ${DUSR}
+
